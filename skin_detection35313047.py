@@ -95,8 +95,8 @@ def save_labels_as_image(label_pred, f):
 #%%
 # define a classifier 
 #
-from sklearn.ensemble import RandomForestClassifier
-clf = RandomForestClassifier(n_estimators=350)
+from sklearn.neighbors import KNeighborsClassifier
+clf = KNeighborsClassifier(n_neighbors=15)
 
 
 #%%
@@ -109,7 +109,7 @@ features, labels = fetch_data(img_lbl_filenames_train)
 # reduce training data for saving computation time
 from sklearn.cross_validation import train_test_split
 features, features_NA, labels, labels_NA = train_test_split(features, labels, 
-                                                            test_size=0.99, random_state=2016)
+                                                            test_size=0.90, random_state=2016)
 print('done in %.2fs.' % (time() - t0))
 
 
